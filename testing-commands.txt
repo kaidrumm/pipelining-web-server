@@ -1,0 +1,17 @@
+1) Testing post ability
+
+echo -en "POST /files/test.html HTTP/1.1
+Host: localhost
+Connection: Keep-alive
+
+POSTDATA" | nc 127.0.0.1 8888
+
+
+2) Testing keepalive
+
+(echo -en "GET /files/test.html HTTP/1.1
+Host: localhost
+Connection: Keep-alive";
+sleep 10;
+echo -en "GET /files/test.html HTTP/1.1
+Host: localhost") | nc 127.0.0.1 8888
